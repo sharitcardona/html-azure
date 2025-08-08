@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Peludito Feliz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <img src="assets/images/4564998.png" alt="Logo" class="logo">
+        <h1>Descubre tu tienda favorita para tu peludito</h1>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="Pago-form" class="section">
+      <h2>Selecciona tu método de pago</h2>
+      <form id="addPagoForm">
+        <select id="esTarjetac" required>
+          <option value="">¿Pagas con tarjeta de crédito?</option>
+          <option value="Sí">Sí, Visa</option>
+          <option value="Sí">Sí, MasterCard</option>
+          <option value="Sí">Sí, American Express</option>
+          <option value="No">No</option>
+        </select>
+
+        <select id="esTarjetad" required>
+          <option value="">¿Pagas con tarjeta de débito?</option>
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+
+        <select id="esTrasnferencia" required>
+          <option value="">¿Pagas por transferencia bancaria?</option>
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+
+        <select id="esContrae" required>
+          <option value="">¿Pagas contra entrega?</option>
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+
+        <!-- Campo oculto para el número de tarjeta -->
+        <div id="cardNumberContainer" style="display: none; margin-top: 10px;">
+          <label for="cardNumber">Número de tarjeta:</label>
+          <input type="text" id="cardNumber" name="cardNumber" placeholder="Ingrese su número de tarjeta">
+        </div>
+
+        <button type="submit">Continuar con el pago</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tarjeta Crédito</th>
+            <th>Tarjeta Débito</th>
+            <th>Transferencia</th>
+            <th>Contra Entrega</th>
+          </tr>
+        </thead>
+        <tbody id="PagoTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tarjetaCredito = document.getElementById("esTarjetac");
+      const tarjetaDebito = document.getElementById("esTarjetad");
+      const cardNumberContainer = document.getElementById("cardNumberContainer");
+
+      function mostrarCampoTarjeta() {
+        if (tarjetaCredito.value === "Sí" || tarjetaDebito.value === "Sí") {
+          cardNumberContainer.style.display = "block";
+        } else {
+          cardNumberContainer.style.display = "none";
+        }
+      }
+
+      tarjetaCredito.addEventListener("change", mostrarCampoTarjeta);
+      tarjetaDebito.addEventListener("change", mostrarCampoTarjeta);
+    });
+  </script>
+</body>
+</html>
